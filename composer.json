@@ -1,11 +1,11 @@
 {
-    "name": "vish4395/LaravelFileViewer",
+    "name": "vish4395/laravel-file-viewer",
     "description": "A basic file viewer for Laravel projects",
     "keywords": [
         "vish4395",
-        "LaravelFileViewer"
+        "laravel-file-viewer"
     ],
-    "homepage": "https://github.com/vish4395/LaravelFileViewer",
+    "homepage": "https://github.com/vish4395/laravel-file-viewer",
     "license": "MIT",
     "type": "library",
     "authors": [

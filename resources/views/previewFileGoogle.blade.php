@@ -1,7 +1,7 @@
 <?php
     $page_title=$filename;
     ?>
-    @extends('LaravelFileViewer::layouts.blank_app_no_logo')
+    @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
     @section('content')
 
@@ -28,7 +28,7 @@
         <div class="card-body p-1">
             <div class="row">
                 <div class="col-sm-12">
-                    @include('LaravelFileViewer::previewFileDetails')
+                    @include('laravel-file-viewer::previewFileDetails')
                 </div>
             </div>
         </div>

@@ -14,29 +14,29 @@ class LaravelFileViewerServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'LaravelFileViewer');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'LaravelFileViewer');
+        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-file-viewer');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-file-viewer');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('LaravelFileViewer.php'),
+                __DIR__.'/../config/config.php' => config_path('laravel-file-viewer.php'),
             ], 'config');
 
             // Publishing the views.
             $this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/LaravelFileViewer'),
+                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-file-viewer'),
             ], 'views');
 
             // Publishing assets.
             $this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/LaravelFileViewer'),
+                __DIR__.'/../resources/assets' => public_path('vendor/laravel-file-viewer'),
             ], 'assets');
 
             // Publishing the translation files.
             $this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/LaravelFileViewer'),
+                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-file-viewer'),
             ], 'lang');
 
             // Registering package commands.
@@ -50,10 +50,10 @@ class LaravelFileViewerServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'LaravelFileViewer');
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-file-viewer');
 
         // Register the main class to use with the facade
-        $this->app->singleton('LaravelFileViewer', function () {
+        $this->app->singleton('laravel-file-viewer', function () {
             return new LaravelFileViewer;
         });
 

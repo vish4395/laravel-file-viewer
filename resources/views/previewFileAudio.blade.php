@@ -1,7 +1,7 @@
 <?php
 $page_title=$filename;
     ?>
-    @extends('LaravelFileViewer::layouts.blank_app_no_logo')
+    @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
     @section('content')
     <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
@@ -27,7 +27,7 @@ $page_title=$filename;
 <div class="col-md-12">
     <div class="card file-detail-card m-0">
         <div class="card-body p-1">
-                @include('LaravelFileViewer::previewFileDetails')
+                @include('laravel-file-viewer::previewFileDetails')
         </div>
     </div>
 </div>

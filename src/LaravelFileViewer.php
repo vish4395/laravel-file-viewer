@@ -16,17 +16,17 @@ class LaravelFileViewer
       
       switch (explode('/',$type)[0]) {
           case 'image':
-              return view('LaravelFileViewer::previewFileImage',$viewdata);
+              return view('laravel-file-viewer::previewFileImage',$viewdata);
               break;
           case 'audio':
-              return view('LaravelFileViewer::previewFileAudio',$viewdata);
+              return view('laravel-file-viewer::previewFileAudio',$viewdata);
               break;
           case 'video':
-              return view('LaravelFileViewer::previewFileVideo',$viewdata);
+              return view('laravel-file-viewer::previewFileVideo',$viewdata);
               break;
           
           default:
-          return view('LaravelFileViewer::previewFileImage',$viewdata);
+          return view('laravel-file-viewer::previewFileImage',$viewdata);
           // return view('previewFileGoogle',$viewdata);
               break;
       }

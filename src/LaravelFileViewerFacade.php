@@ -16,6 +16,6 @@ class LaravelFileViewerFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'LaravelFileViewer';
+        return 'laravel-file-viewer';
     }
 }
