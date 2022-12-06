@@ -16,6 +16,10 @@ composer require vish4395/laravel-file-viewer
 
 ## Usage
 
+publish assets 
+php artisan vendor:publish  --provider="Vish4395\LaravelFileViewer\LaravelFileViewerServiceProvider" --tag=assets
+
+
 ```php
 // Usage description here
 ```
@@ -41,12 +45,10 @@ If you discover any security related issues, please email vishal@newai.in instea
 ## Credits
 
 -   [Vishal Sharma](https://github.com/vish4395)
+-   [meshesha/officetohtml](https://github.com/meshesha/officetohtml)
 -   [All Contributors](../../contributors)
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).

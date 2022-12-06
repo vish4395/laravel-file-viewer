@@ -77,7 +77,7 @@ function update_viewer() {
       if (link.length <= 1) {
         link = '{!! $file_url !!}';
       }
-      $('#google').attr('src', 'https://docs.google.com/a/kprimesoft.com/viewer?url=' + link + '&embedded=true');
+      $('#google').attr('src', 'https://docs.google.com/a/{{$_SERVER['SERVER_NAME']}}/viewer?url=' + link + '&embedded=true');
     }
 </script>
 @endsection

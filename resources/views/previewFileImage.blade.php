@@ -4,32 +4,7 @@
     @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
     @section('content')
-<!--PDF--> 
-<link rel="stylesheet" href="{{ asset('plugins/officetohtml/pdf/pdf.viewer.css') }}"> 
-<script src="{{ asset('plugins/officetohtml/pdf/pdf.js') }}"></script> 
-<!--Docs-->
-<script src="{{ asset('plugins/officetohtml/docx/jszip-utils.js') }}"></script>
-<script src="{{ asset('plugins/officetohtml/docx/mammoth.browser.min.js') }}"></script>
-<!--PPTX-->
-<link rel="stylesheet" href="{{ asset('plugins/officetohtml/PPTXjs/css/pptxjs.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/officetohtml/PPTXjs/css/nv.d3.min.css') }}">
 
-<script type="text/javascript" src="{{ asset('plugins/officetohtml/PPTXjs/js/filereader.js') }}"></script>
-<script type="text/javascript" src="{{ asset('plugins/officetohtml/PPTXjs/js/d3.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('plugins/officetohtml/PPTXjs/js/nv.d3.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('plugins/officetohtml/PPTXjs/js/pptxjs.js') }}"></script>
-<script type="text/javascript" src="{{ asset('plugins/officetohtml/PPTXjs/js/divs2slides.js') }}"></script>
-
-<!--All Spreadsheet -->
-<link rel="stylesheet" href="{{ asset('plugins/officetohtml/SheetJS/handsontable.full.min.css') }}">
-<script type="text/javascript" src="{{ asset('plugins/officetohtml/SheetJS/handsontable.full.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('plugins/officetohtml/SheetJS/xlsx.full.min.js') }}"></script>
-<!--Image viewer--> 
-<link rel="stylesheet" href="{{ asset('plugins/officetohtml/verySimpleImageViewer/css/jquery.verySimpleImageViewer.css') }}">
-<script type="text/javascript" src="{{ asset('plugins/officetohtml/verySimpleImageViewer/js/jquery.verySimpleImageViewer.js') }}"></script>
-<!--officeToHtml-->
-<script src="{{ asset('plugins/officetohtml/officeToHtml/officeToHtml.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('plugins/officetohtml/officeToHtml/officeToHtml.css') }}">
 <style>
     .file-detail-card{
         width: 100%;
@@ -60,14 +35,34 @@
     </div>
 </div>
 <div class="col-md-12">
-    <div id="resolte-contaniner" class="preview_container"></div>
+    <div id="resolte-contaniner" class="preview_container">
+        <img id="image" src="{!! $file_url !!}" alt="Picture" height="100%" style="display: none;">
+    </div>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.js" integrity="sha512-UzpQxIWgLbHvbVd4+8fcRWqFLi1pQ6qO6yXm+Hiig76VhnhW/gvfvnacdPanleB2ak+VwiI5BUqrPovGDPsKWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.css" integrity="sha512-XHhuZDcgyu28Fsd75blrhZKbqqWCXaUCOuy2McB4doeSDu34BgydakOK71TH/QEhr0nhiieBNhF8yWS8thOGUg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <script>
-    $(function () {
-    $("#resolte-contaniner").officeToHtml({
-   url: '{!! $file_url !!}'
+//     $("#resolte-contaniner").officeToHtml({
+//    url: '{!! $file_url !!}'
+// });
+
+
+// View an image.
+const viewer = new Viewer(document.getElementById('image'), {
+  inline: true,
+  backdrop: false,
+  navbar:false
 });
-})
+// Then, show the image by clicking it, or call `viewer.show()`.
+
+// View a list of images.
+// Note: All images within the container will be found by calling `element.querySelectorAll('img')`.
+// const gallery = new Viewer(document.getElementById('images'));
+// Then, show one image by click it, or call `gallery.show()`.
+
+
 </script>
 @endsection

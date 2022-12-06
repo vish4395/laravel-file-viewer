@@ -37,7 +37,7 @@
 <div class="col-md-12">
     <div id="resolte-contaniner" class="preview_container">
         <iframe id="google" 
-        src="https://docs.google.com/a/kprimesoft.com/viewer?url={!! $file_url !!}&embedded=true"
+        src="https://docs.google.com/a/{{$_SERVER['SERVER_NAME']}}/viewer?url={!! $file_url !!}&embedded=true"
          width="100%" height="600" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
         
     </div>
@@ -52,7 +52,7 @@ function update_viewer() {
       if (link.length <= 1) {
         link = '{!! $file_url !!}';
       }
-      $('#google').attr('src', 'https://docs.google.com/a/kprimesoft.com/viewer?url=' + link + '&embedded=true');
+      $('#google').attr('src', 'https://docs.google.com/a/{{$_SERVER['SERVER_NAME']}}/viewer?url=' + link + '&embedded=true');
     }
 </script>
 @endsection

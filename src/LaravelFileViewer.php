@@ -8,8 +8,13 @@ class LaravelFileViewer
 {
     public function show(String $filename,String $filePath,String $file_url,$file_data=[])
     {
+      if (!Storage::exists($filePath)) {
+        abort(404,__("file_not_found_or_deleted"));
+      }
       $type = Storage::mimeType($filePath);
-      $metadata = Storage::getMetaData($filePath);
+      $metadata = [
+        'size' => Storage::size($filePath)
+      ];
       $icon_class=$this->getIconClass($type);
       $filesizenyteformat=$this->formatBytes($metadata['size']);
       $viewdata=compact('filename','file_url','type','file_data','metadata','icon_class','filesizenyteformat');
@@ -26,8 +31,8 @@ class LaravelFileViewer
               break;
           
           default:
-          return view('laravel-file-viewer::previewFileImage',$viewdata);
-          // return view('previewFileGoogle',$viewdata);
+          return view('laravel-file-viewer::previewFileOffice',$viewdata);
+          // return view('laravel-file-viewer::previewFileGoogle',$viewdata);
               break;
       }
     }
