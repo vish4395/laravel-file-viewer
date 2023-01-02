@@ -1,10 +1,9 @@
-# Very short description of the package
+# Laravel File Viewer - A package top see preview of diffrent file types
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vish4395/laravel-file-viewer.svg?style=flat-square)](https://packagist.org/packages/vish4395/laravel-file-viewer)
 [![Total Downloads](https://img.shields.io/packagist/dt/vish4395/laravel-file-viewer.svg?style=flat-square)](https://packagist.org/packages/vish4395/laravel-file-viewer)
-![GitHub Actions](https://github.com/vish4395/laravel-file-viewer/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Laravel File Viewer is a wrapper for implementing different JS libraries to view files according to their types. It supports images, videos, audio, docx, pptx, xlsx and pdfs etc. 
 
 ## Installation
 
@@ -14,14 +13,38 @@ You can install the package via composer:
 composer require vish4395/laravel-file-viewer
 ```
 
+Publish assets 
+```bash
+php artisan vendor:publish  --provider="Vish4395\LaravelFileViewer\LaravelFileViewerServiceProvider" --tag=assets
+```
+
 ## Usage
 
-publish assets 
-php artisan vendor:publish  --provider="Vish4395\LaravelFileViewer\LaravelFileViewerServiceProvider" --tag=assets
-
+Add alias
 
 ```php
-// Usage description here
+    'aliases' => Facade::defaultAliases()->merge([
+        'LaravelFileViewer' => Vish4395\LaravelFileViewer\LaravelFileViewerFacade::class,
+    ])->toArray(),
+```
+
+Example 
+```php
+use LaravelFileViewer;
+/*
+ * ...
+ */
+public function file_preview($filename){
+        $filepath='public/'.$filename;
+        $file_url=asset('storage/'.$filename);
+        $file_data=[
+          [
+            'label' => __('Label'),
+            'value' => "Value"
+          ]
+        ];
+        return LaravelFileViewer::show($filename,$filepath,$file_url,$file_data);
+      }
 ```
 
 ### Testing
@@ -35,11 +58,11 @@ composer test
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
 ## Contributing
-
+You are most welcome to contribute this project
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+please email vishal@newai.in for contribute this project or create PR.
 
 ### Security
-
 If you discover any security related issues, please email vishal@newai.in instead of using the issue tracker.
 
 ## Credits
