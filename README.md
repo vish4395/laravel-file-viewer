@@ -47,12 +47,6 @@ public function file_preview($filename){
       }
 ```
 
-### Testing
-
-```bash
-composer test
-```
-
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
@@ -74,4 +68,10 @@ If you discover any security related issues, please email vishal@newai.in instea
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+
+
+## Demo:
+
+https://user-images.githubusercontent.com/12929023/210215225-000507cf-d8f4-4e5b-b7ad-ad6a2276ac93.mp4
 
