@@ -18,6 +18,11 @@ Publish assets
 php artisan vendor:publish  --provider="Vish4395\LaravelFileViewer\LaravelFileViewerServiceProvider" --tag=assets
 ```
 
+Publish views (optional)(for customize ui) 
+```bash
+php artisan vendor:publish  --provider="Vish4395\LaravelFileViewer\LaravelFileViewerServiceProvider" --tag=views
+```
+
 ## Usage
 
 Add alias
