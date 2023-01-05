@@ -2,6 +2,8 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vish4395/laravel-file-viewer.svg?style=flat-square)](https://packagist.org/packages/vish4395/laravel-file-viewer)
 [![Total Downloads](https://img.shields.io/packagist/dt/vish4395/laravel-file-viewer.svg?style=flat-square)](https://packagist.org/packages/vish4395/laravel-file-viewer)
+![GitHub](https://img.shields.io/github/license/vish4395/laravel-file-viewer?style=flat-square)
+![Twitter URL](https://img.shields.io/twitter/url?color=blue&logo=twitter&style=flat-square&url=https%3A%2F%2Fgithub.com%2Fvish4395%2Flaravel-file-viewer%2F)
 
 Laravel File Viewer is a wrapper for implementing different JS libraries to view files according to their types. It supports images, videos, audio, docx, pptx, xlsx and pdfs etc. 
 
