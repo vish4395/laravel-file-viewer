@@ -1,4 +1,4 @@
-# Laravel File Viewer - A package top see preview of diffrent file types
+# Laravel File Viewer - A package to see preview of diffrent file types
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vish4395/laravel-file-viewer.svg?style=flat-square)](https://packagist.org/packages/vish4395/laravel-file-viewer)
 [![Total Downloads](https://img.shields.io/packagist/dt/vish4395/laravel-file-viewer.svg?style=flat-square)](https://packagist.org/packages/vish4395/laravel-file-viewer)
