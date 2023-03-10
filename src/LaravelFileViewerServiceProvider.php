@@ -25,7 +25,7 @@ class LaravelFileViewerServiceProvider extends ServiceProvider
             ], 'config');
 
             // Publishing the views.
-            $this->publishes([
+            $this->publishes([  
                 __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-file-viewer'),
             ], 'views');
 
