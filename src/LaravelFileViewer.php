@@ -33,10 +33,21 @@ class LaravelFileViewer
           case 'video':
               return view('laravel-file-viewer::previewFileVideo',$viewdata);
               break;
-          
+          case 'application':
+              // Use docxjs view for docx files
+              $subtype = explode('/',$type)[1];
+              if (
+                  $subtype === 'vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+                  $subtype === 'msword'
+              ) {
+                  return view('laravel-file-viewer::previewFileDocxjs', $viewdata);
+              }
+              // You can add more custom application/* handlers here if needed
+              // fallback to office view
+              return view('laravel-file-viewer::previewFileOffice', $viewdata);
+              break;
           default:
-          return view('laravel-file-viewer::previewFileOffice',$viewdata);
-          // return view('laravel-file-viewer::previewFileGoogle',$viewdata);
+              return view('laravel-file-viewer::previewFileOffice',$viewdata);
               break;
       }
     }
