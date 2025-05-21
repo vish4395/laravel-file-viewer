@@ -1,5 +1,5 @@
 <?php
-    $page_title=$filename;
+    $page_title=$fileName;
     ?>
     @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
@@ -73,7 +73,7 @@
 <script>
     $(function () {
     $("#resolte-contaniner").officeToHtml({
-   url: '{!! $file_url !!}',
+   url: '{!! $fileUrl !!}',
    docxSetting: {
         includeEmbeddedStyleMap: true,
         includeDefaultStyleMap: true,

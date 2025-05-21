@@ -1,5 +1,5 @@
 <?php
-    $page_title=$filename;
+    $page_title=$fileName;
     ?>
     @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
@@ -37,7 +37,7 @@
 <div class="col-md-12">
     <div id="resolte-contaniner" class="preview_container">
         <iframe id="google" 
-        src="https://docs.google.com/a/{{$_SERVER['SERVER_NAME']}}/viewer?url={!! $file_url !!}&embedded=true"
+        src="https://docs.google.com/a/{{$_SERVER['SERVER_NAME']}}/viewer?url={!! $fileUrl !!}&embedded=true"
          width="100%" height="600" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
         
     </div>
@@ -45,12 +45,12 @@
 </div>
 <script>
 //     $("#resolte-contaniner").officeToHtml({
-//    url: '{!! $file_url !!}'
+//    url: '{!! $fileUrl !!}'
 // });
 function update_viewer() {
       var link = $('#input').val()
       if (link.length <= 1) {
-        link = '{!! $file_url !!}';
+        link = '{!! $fileUrl !!}';
       }
       $('#google').attr('src', 'https://docs.google.com/a/{{$_SERVER['SERVER_NAME']}}/viewer?url=' + link + '&embedded=true');
     }

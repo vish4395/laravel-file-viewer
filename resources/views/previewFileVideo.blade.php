@@ -1,5 +1,5 @@
 <?php
-    $page_title=$filename;
+    $page_title=$fileName;
     ?>
     @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
@@ -55,7 +55,7 @@
             {{-- fantasy forest sea city--}}
         <video id="my-video" class="video-js vjs-theme-forest embed-responsive-item" controls preload="auto"
         data-setup="{}">
-            <source src="{!! $file_url !!}" />
+            <source src="{!! $fileUrl !!}" />
             <p class="vjs-no-js">
                 To view this video please enable JavaScript, and consider upgrading to a
                 web browser that
@@ -70,12 +70,12 @@
 <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
 <script>
 //     $("#resolte-contaniner").officeToHtml({
-//    url: '{!! $file_url !!}'
+//    url: '{!! $fileUrl !!}'
 // });
 function update_viewer() {
       var link = $('#input').val()
       if (link.length <= 1) {
-        link = '{!! $file_url !!}';
+        link = '{!! $fileUrl !!}';
       }
       $('#google').attr('src', 'https://docs.google.com/a/{{$_SERVER['SERVER_NAME']}}/viewer?url=' + link + '&embedded=true');
     }

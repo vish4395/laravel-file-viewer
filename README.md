@@ -41,16 +41,16 @@ use LaravelFileViewer;
 /*
  * ...
  */
-public function file_preview($filename){
-        $filepath='public/'.$filename;
-        $file_url=asset('storage/'.$filename);
-        $file_data=[
+public function file_preview($fileName){
+        $filepath='public/'.$fileName;
+        $fileUrl=asset('storage/'.$fileName);
+        $fileData=[
           [
             'label' => __('Label'),
             'value' => "Value"
           ]
         ];
-        return LaravelFileViewer::show($filename,$filepath,$file_url,$file_data);
+        return LaravelFileViewer::show($fileName,$filepath,$fileUrl,$fileData);
       }
 ```
 
