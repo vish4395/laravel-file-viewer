@@ -5,6 +5,8 @@
 ![GitHub](https://img.shields.io/github/license/vish4395/laravel-file-viewer?style=flat-square)
 [![Twitter URL](https://img.shields.io/twitter/url?color=blue&logo=twitter&style=flat-square&url=https%3A%2F%2Fgithub.com%2Fvish4395%2Flaravel-file-viewer%2F)](https://twitter.com/intent/tweet?text=Checkout%20this%20awesome%20package%0Ahttps%3A//github.com/vish4395/laravel-file-viewer/)
 
+![Laravel File Viewer](laravel-file-viewer.png)
+
 Laravel File Viewer is a wrapper for implementing different JS libraries to view files according to their types. It supports images, videos, audio, docx, pptx, xlsx and pdfs etc. 
 
 ## Installation
@@ -35,23 +37,26 @@ Add alias
     ])->toArray(),
 ```
 
-Example 
+Example Controller usage:
 ```php
-use LaravelFileViewer;
-/*
- * ...
- */
-public function file_preview($fileName){
-        $filepath='public/'.$fileName;
-        $fileUrl=asset('storage/'.$fileName);
-        $fileData=[
-          [
-            'label' => __('Label'),
-            'value' => "Value"
-          ]
+use Illuminate\Http\Request;
+use Vish4395\LaravelFileViewer\LaravelFileViewer;
+
+class FilePreviewController extends Controller
+{
+    public function filePreview($fileName){
+        $filePath = $fileName;
+        $disk = 'public';
+        $fileUrl = asset('storage/' . $fileName);
+        $fileData = [
+            [
+                'label' => __('Label'),
+                'value' => "Value"
+            ]
         ];
-        return LaravelFileViewer::show($fileName,$filepath,$fileUrl,$fileData);
-      }
+        return LaravelFileViewer::show($fileName, $filePath, $fileUrl, $disk, $fileData);
+    }
+}
 ```
 
 ### Changelog
@@ -59,8 +64,8 @@ public function file_preview($fileName){
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
 ## Contributing
-You are most welcome to contribute this project
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+You are most welcome to contribute this project  
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.  
 please email vishal@newai.in for contribute this project or create PR.
 
 ### Security
@@ -70,13 +75,12 @@ If you discover any security related issues, please email vishal@newai.in instea
 
 -   [Vishal Sharma](https://github.com/vish4395)
 -   [meshesha/officetohtml](https://github.com/meshesha/officetohtml)
+-   [VolodymyrBaydalka/docxjs](https://github.com/VolodymyrBaydalka/docxjs)
 -   [All Contributors](../../contributors)
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-
 
 ## Demo:
 
