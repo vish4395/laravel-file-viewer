@@ -1,5 +1,5 @@
 <?php
-    $page_title=$filename;
+    $page_title=$fileName;
     ?>
     @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
@@ -36,7 +36,7 @@
 </div>
 <div class="col-md-12">
     <div id="resolte-contaniner" class="preview_container">
-        <img id="image" src="{!! $file_url !!}" alt="Picture" height="100%" style="display: none;">
+        <img id="image" src="{!! $fileUrl !!}" alt="Picture" height="100%" style="display: none;">
     </div>
 </div>
 </div>
@@ -46,7 +46,7 @@
 
 <script>
 //     $("#resolte-contaniner").officeToHtml({
-//    url: '{!! $file_url !!}'
+//    url: '{!! $fileUrl !!}'
 // });
 
 

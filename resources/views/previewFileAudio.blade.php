@@ -1,5 +1,5 @@
 <?php
-$page_title=$filename;
+$page_title=$fileName;
     ?>
     @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
@@ -37,7 +37,7 @@ $page_title=$filename;
             controls
             class="w-100"
             style="margin-top: 10%"
-            src="{!! $file_url !!}">
+            src="{!! $fileUrl !!}">
                 Your browser does not support the
                 <code>audio</code> element.
         </audio>
@@ -46,7 +46,7 @@ $page_title=$filename;
 </div>
 <script>
 //     $("#resolte-contaniner").officeToHtml({
-//    url: '{!! $file_url !!}'
+//    url: '{!! $fileUrl !!}'
 // });
 const player = new Plyr('#player');
 

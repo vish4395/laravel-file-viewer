@@ -1,5 +1,5 @@
 <?php
-    $page_title=$filename;
+    $page_title=$fileName;
     ?>
     @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/css/pptxjs.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/css/nv.d3.min.css') }}">
 
+<script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/js/jszip.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/js/filereader.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/js/d3.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/js/nv.d3.min.js') }}"></script>
@@ -73,7 +74,7 @@
 <script>
     $(function () {
     $("#resolte-contaniner").officeToHtml({
-   url: '{!! $file_url !!}',
+   url: '{!! $fileUrl !!}',
    docxSetting: {
         includeEmbeddedStyleMap: true,
         includeDefaultStyleMap: true,
