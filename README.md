@@ -5,8 +5,9 @@
 [![GitHub Stars](https://img.shields.io/github/stars/vish4395/laravel-file-viewer?style=flat-square)](https://github.com/vish4395/laravel-file-viewer/stargazers)
 [![Twitter URL](https://img.shields.io/twitter/url?color=blue&logo=twitter&style=flat-square&url=https%3A%2F%2Fgithub.com%2Fvish4395%2Flaravel-file-viewer%2F)](https://twitter.com/intent/tweet?text=Checkout%20this%20awesome%20package%0Ahttps%3A//github.com/vish4395/laravel-file-viewer/)
 
-
-![Laravel File Viewer](laravel-file-viewer.png)
+<p align="center">
+<img width="80%" src="laravel-file-viewer.png" alt="Laravel File Viewer">
+</p>
 
 **Laravel File Viewer** is the easiest way to preview images, videos, audio, PDF, DOCX, PPTX, XLSX, and more in your Laravel app. Instantly add beautiful file previews to your admin panels, dashboards, or user portals.
 
@@ -98,24 +99,6 @@ Route::get('/file-preview/{fileName}', [FilePreviewController::class, 'filePrevi
 
 ---
 
-## 🏆 Sponsors
-
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://www.dotsquares.com/" target="_blank">
-        <img src="https://www.dotsquares.com/images/logo.png" width="120" alt="Dotsquares">
-        <br>
-        <b>Dotsquares</b>
-      </a>
-      <br>
-      <sub>Thank you for supporting open source!</sub>
-    </td>
-  </tr>
-</table>
-
----
-
 ## 📈 Help Us Grow!
 
 If you find this package useful:
@@ -135,8 +118,8 @@ See [CHANGELOG](CHANGELOG.md) for recent updates.
 
 ## 🤝 Contributing
 
-PRs are welcome!  
-See [CONTRIBUTING](CONTRIBUTING.md) for details.  
+PRs are welcome!
+See [CONTRIBUTING](CONTRIBUTING.md) for details.
 Questions? Email [vishal@newai.in](mailto:vishal@newai.in) or open an issue.
 
 ---
