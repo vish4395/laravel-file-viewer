@@ -19,7 +19,15 @@
         overflow: scroll;
         background: white;
         padding: 1em;
-        height: 90vh
+        height: 85vh;
+        width: 100%;
+        min-width: 200px;
+
+    }
+
+    .viewer-container{
+        width: 100% !important;
+        height: 100% !important;
     }
 </style>
 <div class="row">
@@ -35,8 +43,11 @@
     </div>
 </div>
 <div class="col-md-12">
+    <div class="text-center" id="loading-container">
+        <img src="{{ asset('vendor/laravel-file-viewer/loading.gif') }}" alt="Loading..." class="img-fluid" style="max-width: 100px;">
+    </div>
     <div id="resolte-contaniner" class="preview_container">
-        <img id="image" src="{!! $fileUrl !!}" alt="Picture" height="100%" style="display: none;">
+        <img id="image" src="{!! $fileUrl !!}" alt="Picture" height="100%" style="display: none;min-width: 200px;">
     </div>
 </div>
 </div>
@@ -49,12 +60,24 @@
 //    url: '{!! $fileUrl !!}'
 // });
 
-
-// View an image.
-const viewer = new Viewer(document.getElementById('image'), {
-  inline: true,
-  backdrop: false,
-  navbar:false
+// Initialize the viewer after loading image
+document.addEventListener('DOMContentLoaded', function () {
+    
+    // Wait for the image to load before initializing the viewer
+    const image = document.getElementById('image');
+    setTimeout(() => {
+            // Get the image element
+        const image = document.getElementById('image');     
+        // loading-container
+        const loadingContainer = document.getElementById('loading-container');
+            // Initialize the viewer with the image element
+            const viewer = new Viewer(image, {
+                inline: true,
+                backdrop: false,
+                navbar: false
+            });
+            loadingContainer.style.display = 'none'; // Hide the loading container
+        }, timeout = 500);
 });
 // Then, show the image by clicking it, or call `viewer.show()`.
 
