@@ -1,4 +1,4 @@
-# 🚀 Laravel File Viewer
+# 🖼️ Laravel File Viewer
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vish4395/laravel-file-viewer.svg?style=flat-square)](https://packagist.org/packages/vish4395/laravel-file-viewer)
 [![Total Downloads](https://img.shields.io/packagist/dt/vish4395/laravel-file-viewer.svg?style=flat-square&color=brightgreen)](https://packagist.org/packages/vish4395/laravel-file-viewer)
 ![GitHub](https://img.shields.io/github/license/vish4395/laravel-file-viewer?style=flat-square)
@@ -148,4 +148,12 @@ MIT. See [License File](LICENSE.md) for details.
 ## 🎬 Demo
 
 https://user-images.githubusercontent.com/12929023/210215225-000507cf-d8f4-4e5b-b7ad-ad6a2276ac93.mp4
+
+---
+
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=vish4395/laravel-file-viewer&type=Timeline)](https://www.star-history.com/#vish4395/laravel-file-viewer&Timeline)
+
+---
 
