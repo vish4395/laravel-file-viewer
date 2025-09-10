@@ -8,7 +8,7 @@ class LaravelFileViewer
 {
     public static function show(String $fileName, String $filePath, String $fileUrl, $disk = 'public', $fileData = [])
     {
-      if (!Storage::disk('public')->exists($filePath)) {
+      if (!Storage::disk($disk)->exists($filePath)) {
           return response()->json(['error' => 'File not found.'], 404);
       }
 
