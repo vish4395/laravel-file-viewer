@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Storage;
 
 class LaravelFileViewer
 {
-    public static function show(string $fileName, string $filePath, string $fileUrl, string $disk = 'public', array $fileData = []): \Illuminate\Contracts\View\View
+    public static function show(string $fileName, string $filePath, string $fileUrl, string $disk = null, array $fileData = []): \Illuminate\Contracts\View\View
     {
+        $disk = $disk ?? config('laravel-file-viewer.default_disk', 'public');
         $storage = Storage::disk($disk);
 
         if (!$storage->exists($filePath)) {
@@ -58,9 +59,15 @@ class LaravelFileViewer
                     case 'json':
                         return view('laravel-file-viewer::previewFileText', $viewdata);
                     default:
+                        if (config('laravel-file-viewer.google_viewer_fallback', false)) {
+                            return view('laravel-file-viewer::previewFileGoogle', $viewdata);
+                        }
                         return view('laravel-file-viewer::previewFileOffice', $viewdata);
                 }
             default:
+                if (config('laravel-file-viewer.google_viewer_fallback', false)) {
+                    return view('laravel-file-viewer::previewFileGoogle', $viewdata);
+                }
                 return view('laravel-file-viewer::previewFileOffice', $viewdata);
         }
     }
