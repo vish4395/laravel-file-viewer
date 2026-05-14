@@ -81,11 +81,12 @@
     </div>
 </div>
 
-<script src="{{ asset('vendor/laravel-file-viewer/officetohtml/SheetJS/xlsx.full.min.js') }}"></script>
+<script src="{{ asset('vendor/laravel-file-viewer/officetohtml/SheetJS/xlsx.mini.min.js') }}"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     var fileUrl = @json($fileUrl);
     var workbook = null;
+    var ROW_LIMIT = 2000;
 
     function renderSheet(ws) {
         var data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
@@ -104,15 +105,28 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         thead.appendChild(headerRow);
 
-        data.slice(1).forEach(function (row) {
+        var rows = data.slice(1);
+        var truncated = rows.length > ROW_LIMIT;
+        if (truncated) rows = rows.slice(0, ROW_LIMIT);
+
+        var frag = document.createDocumentFragment();
+        rows.forEach(function (row) {
             var tr = document.createElement('tr');
             row.forEach(function (cell) {
                 var td = document.createElement('td');
-                td.textContent = (cell !== null && cell !== undefined) ? cell : '';
+                td.textContent = (cell !== null && cell !== undefined) ? String(cell) : '';
                 tr.appendChild(td);
             });
-            tbody.appendChild(tr);
+            frag.appendChild(tr);
         });
+        tbody.appendChild(frag);
+
+        if (truncated) {
+            var notice = document.createElement('tr');
+            notice.innerHTML = '<td colspan="' + (data[0] || []).length + '" class="text-center text-warning fw-bold py-2">' +
+                'Showing first ' + ROW_LIMIT + ' rows of ' + (data.length - 1) + ' total.</td>';
+            tbody.appendChild(notice);
+        }
 
         document.getElementById('excel-loading').style.display = 'none';
         document.getElementById('sheet-wrapper').style.display = '';
