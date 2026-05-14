@@ -17,33 +17,45 @@
     }
 
     /*
-     * Reset Bootstrap's global element styles within the viewer so they don't
-     * override Word's computed layout. `all: revert` sends each element back to
-     * the browser UA stylesheet — exactly the baseline docx-preview expects.
+     * Bootstrap ships `*, *::before, *::after { box-sizing: border-box }`.
+     * docx-preview computes page widths from Word's inch values and expects
+     * content-box — border-box shrinks the content area by the padding, causing
+     * text to overflow and clip. Restore content-box for everything inside.
      */
-    #docxjs-viewer p,
+    #docxjs-viewer .docx-wrapper,
+    #docxjs-viewer .docx-wrapper * {
+        box-sizing: content-box;
+    }
+
+    /*
+     * Bootstrap sets margin-bottom: 1rem on p and overrides heading sizes/weights.
+     * These fight Word's own spacing. Revert only these specific properties so
+     * docx-preview's injected per-element styles take effect.
+     */
+    #docxjs-viewer p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
     #docxjs-viewer h1, #docxjs-viewer h2, #docxjs-viewer h3,
-    #docxjs-viewer h4, #docxjs-viewer h5, #docxjs-viewer h6,
-    #docxjs-viewer ul, #docxjs-viewer ol, #docxjs-viewer li,
-    #docxjs-viewer table, #docxjs-viewer tr, #docxjs-viewer td,
-    #docxjs-viewer th, #docxjs-viewer img, #docxjs-viewer span,
-    #docxjs-viewer div, #docxjs-viewer a {
-        all: revert;
+    #docxjs-viewer h4, #docxjs-viewer h5, #docxjs-viewer h6 {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        color: inherit;
+    }
+    #docxjs-viewer ul, #docxjs-viewer ol {
+        padding-left: 0;
+        margin: 0;
+    }
+    #docxjs-viewer table {
+        border-collapse: revert;
     }
 
-    /* docx-preview wraps each page in a .docx-wrapper > section.docx */
-    #docxjs-viewer .docx-wrapper {
-        background: #f0f0f0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-    }
-
+    /* Page shadow — applied on top of docx-preview's .docx-wrapper layout */
     #docxjs-viewer section.docx {
         box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-        background: #fff;
     }
 </style>
 
