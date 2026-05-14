@@ -4,7 +4,7 @@
     @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
     @section('content')
-    <link href="https://vjs.zencdn.net/7.18.1/video-js.css" rel="stylesheet" />
+    <link href="https://vjs.zencdn.net/8.21.1/video-js.css" rel="stylesheet" />
 <link href="https://unpkg.com/@videojs/themes@1/dist/forest/index.css" rel="stylesheet">
 
 <style>
@@ -38,8 +38,8 @@
 </div>
 <div class="col-md-12">
     <div id="result-container" class="preview_container">
-        <div class="embed-responsive embed-responsive-16by9 text-center p-2 mx-auto border border-primary" style="max-width: 650px;max-height: 100%;">
-        <video id="my-video" class="video-js vjs-theme-forest embed-responsive-item" controls preload="auto"
+        <div class="ratio ratio-16x9 text-center p-2 mx-auto border border-primary" style="max-width: 650px;max-height: 100%;">
+        <video id="my-video" class="video-js vjs-theme-forest" controls preload="auto"
         data-setup="{}">
             <source src="{{ $fileUrl }}" />
             <p class="vjs-no-js">
@@ -53,5 +53,5 @@
 </div>
 </div>
 
-<script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
+<script src="https://vjs.zencdn.net/8.21.1/video.min.js"></script>
 @endsection

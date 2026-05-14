@@ -1,8 +1,6 @@
 <?php
 
-/*
- * You can place your custom package configuration in here.
- */
 return [
-
+    'default_disk' => env('FILE_VIEWER_DISK', 'public'),
+    'google_viewer_fallback' => env('FILE_VIEWER_GOOGLE_FALLBACK', false),
 ];
