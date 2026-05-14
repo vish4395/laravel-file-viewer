@@ -10,7 +10,6 @@
     }
     .docx {
         color: #222;
-        font-family: 'Segoe UI', 'Arial', sans-serif;
         font-size: 1em;
         line-height: 1.5;
     }
@@ -35,7 +34,6 @@
 </div>
 
 <script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/docx-preview-lib@0.1.14-fix-3/dist/docx-preview.min.js"></script> --}}
 <script src="{{ asset('vendor/laravel-file-viewer/docx-preview/docx-preview.min.js') }}"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -47,9 +45,12 @@
             hideWrapperOnPrint: true
         });
 
+        const styleContainer = document.createElement('div');
+        document.head.appendChild(styleContainer);
+
         fetch(url)
             .then(response => response.blob())
-            .then(blob => window.docx.renderAsync(blob, container, null, docxOptions))
+            .then(blob => window.docx.renderAsync(blob, container, styleContainer, docxOptions))
             .catch(e => {
                 container.innerHTML = '<div class="alert alert-danger">Failed to load DOCX file.</div>';
             });
