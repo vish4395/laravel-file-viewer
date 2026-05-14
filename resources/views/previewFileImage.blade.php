@@ -51,9 +51,9 @@
     </div>
 </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.js" integrity="sha512-UzpQxIWgLbHvbVd4+8fcRWqFLi1pQ6qO6yXm+Hiig76VhnhW/gvfvnacdPanleB2ak+VwiI5BUqrPovGDPsKWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js" integrity="sha512-wLME0TsJo3lj8nkOEDPkVVMpFblLaQfVZv5+4iuHTPx0lYN3LJQ3DqYjuaT/KkfPO+ZCRiT4AuTGMmJUj05A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.css" integrity="sha512-XHhuZDcgyu28Fsd75blrhZKbqqWCXaUCOuy2McB4doeSDu34BgydakOK71TH/QEhr0nhiieBNhF8yWS8thOGUg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.css" integrity="sha512-SHDPEe5zOdaB4a9c4XN1ZDV0MBbfXJdMOJuMYv7Ij+A9YPBKAQ8jH2LXSXuEBJSQinmvMNANkdQBJwkagKCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
