@@ -2,8 +2,6 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/officetohtml/SheetJS/handsontable.full.min.css') }}">
-
 <style>
     .file-detail-card {
         width: 100%;
@@ -28,22 +26,38 @@
         transition: background 0.15s, color 0.15s;
         white-space: nowrap;
     }
-    .sheet-tab-btn:hover {
-        background: #e2e6ea;
-        border-color: #adb5bd;
+    .sheet-tab-btn:hover { background: #e2e6ea; border-color: #adb5bd; }
+    .sheet-tab-btn.active { background: #0d6efd; border-color: #0d6efd; color: #fff; }
+    #sheet-wrapper {
+        overflow: auto;
+        max-height: 80vh;
+        border: 1px solid #dee2e6;
+        background: #fff;
     }
-    .sheet-tab-btn.active {
-        background: #007bff;
-        border-color: #007bff;
+    #sheet-table {
+        border-collapse: collapse;
+        font-size: 0.82em;
+        white-space: nowrap;
+        width: auto;
+    }
+    #sheet-table thead th {
+        position: sticky;
+        top: 0;
+        background: #343a40;
         color: #fff;
+        padding: 6px 12px;
+        border: 1px solid #495057;
+        font-weight: 600;
     }
-    #hot-container {
-        height: 82vh;
+    #sheet-table tbody td {
+        padding: 4px 10px;
+        border: 1px solid #dee2e6;
+        max-width: 300px;
         overflow: hidden;
+        text-overflow: ellipsis;
     }
-    #excel-loading {
-        color: #555;
-    }
+    #sheet-table tbody tr:nth-child(even) { background: #f8f9fa; }
+    #sheet-table tbody tr:hover { background: #e9f0ff; }
 </style>
 
 <div class="row">
@@ -60,55 +74,59 @@
     </div>
     <div class="col-md-12 mt-2">
         <div id="sheet-tabs"></div>
-        <div id="hot-container" style="height:82vh;overflow:hidden;"></div>
         <div id="excel-loading" class="text-center p-3">Loading spreadsheet...</div>
+        <div id="sheet-wrapper" style="display:none;">
+            <table id="sheet-table"><thead></thead><tbody></tbody></table>
+        </div>
     </div>
 </div>
 
 <script src="{{ asset('vendor/laravel-file-viewer/officetohtml/SheetJS/xlsx.full.min.js') }}"></script>
-<script src="{{ asset('vendor/laravel-file-viewer/officetohtml/SheetJS/handsontable.full.min.js') }}"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     var fileUrl = @json($fileUrl);
-    var hotInstance = null;
+    var workbook = null;
 
     function renderSheet(ws) {
         var data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+        var thead = document.querySelector('#sheet-table thead');
+        var tbody = document.querySelector('#sheet-table tbody');
+        thead.innerHTML = '';
+        tbody.innerHTML = '';
 
-        if (hotInstance) {
-            hotInstance.destroy();
-            hotInstance = null;
-        }
+        if (!data.length) return;
 
-        var container = document.getElementById('hot-container');
-        hotInstance = new Handsontable(container, {
-            data: data,
-            readOnly: true,
-            licenseKey: 'non-commercial-and-evaluation',
-            width: '100%',
-            height: '100%',
-            colHeaders: true,
-            rowHeaders: true,
-            manualColumnResize: true,
-            filters: true,
-            dropdownMenu: true
+        var headerRow = document.createElement('tr');
+        (data[0] || []).forEach(function (cell) {
+            var th = document.createElement('th');
+            th.textContent = cell;
+            headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+
+        data.slice(1).forEach(function (row) {
+            var tr = document.createElement('tr');
+            row.forEach(function (cell) {
+                var td = document.createElement('td');
+                td.textContent = (cell !== null && cell !== undefined) ? cell : '';
+                tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
         });
 
         document.getElementById('excel-loading').style.display = 'none';
+        document.getElementById('sheet-wrapper').style.display = '';
     }
 
     function buildTabs(wb) {
         var tabsContainer = document.getElementById('sheet-tabs');
         tabsContainer.innerHTML = '';
-
         wb.SheetNames.forEach(function (name, index) {
             var btn = document.createElement('button');
             btn.className = 'sheet-tab-btn' + (index === 0 ? ' active' : '');
             btn.textContent = name;
             btn.addEventListener('click', function () {
-                tabsContainer.querySelectorAll('.sheet-tab-btn').forEach(function (b) {
-                    b.classList.remove('active');
-                });
+                tabsContainer.querySelectorAll('.sheet-tab-btn').forEach(function (b) { b.classList.remove('active'); });
                 btn.classList.add('active');
                 renderSheet(wb.Sheets[name]);
             });
@@ -117,19 +135,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     fetch(fileUrl)
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.status);
-            }
-            return response.arrayBuffer();
+        .then(function (r) {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.arrayBuffer();
         })
         .then(function (buf) {
-            var wb = XLSX.read(buf, { type: 'array' });
-            buildTabs(wb);
-            if (wb.SheetNames.length > 0) {
-                renderSheet(wb.Sheets[wb.SheetNames[0]]);
+            workbook = XLSX.read(buf, { type: 'array' });
+            buildTabs(workbook);
+            if (workbook.SheetNames.length > 0) {
+                renderSheet(workbook.Sheets[workbook.SheetNames[0]]);
             } else {
-                document.getElementById('excel-loading').textContent = 'No sheets found in this workbook.';
+                document.getElementById('excel-loading').textContent = 'No sheets found.';
             }
         })
         .catch(function (err) {
