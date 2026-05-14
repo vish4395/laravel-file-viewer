@@ -4,30 +4,9 @@
     @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
     @section('content')
-<!--PDF--> 
-<link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/officetohtml/pdf/pdf.viewer.css') }}"> 
-<script src="{{ asset('vendor/laravel-file-viewer/officetohtml/pdf/pdf.js') }}"></script> 
 <!--Docs-->
 <script src="{{ asset('vendor/laravel-file-viewer/officetohtml/docx/jszip-utils.js') }}"></script>
 <script src="{{ asset('vendor/laravel-file-viewer/officetohtml/docx/mammoth.browser.min.js') }}"></script>
-<!--PPTX-->
-<link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/css/pptxjs.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/css/nv.d3.min.css') }}">
-
-<script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/js/jszip.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/js/filereader.js') }}"></script>
-<script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/js/d3.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/js/nv.d3.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/js/pptxjs.js') }}"></script>
-<script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/PPTXjs/js/divs2slides.js') }}"></script>
-
-<!--All Spreadsheet -->
-<link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/officetohtml/SheetJS/handsontable.full.min.css') }}">
-<script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/SheetJS/handsontable.full.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/SheetJS/xlsx.full.min.js') }}"></script>
-<!--Image viewer--> 
-<link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/officetohtml/verySimpleImageViewer/css/jquery.verySimpleImageViewer.css') }}">
-<script type="text/javascript" src="{{ asset('vendor/laravel-file-viewer/officetohtml/verySimpleImageViewer/js/jquery.verySimpleImageViewer.js') }}"></script>
 <!--officeToHtml-->
 <script src="{{ asset('vendor/laravel-file-viewer/officetohtml/officeToHtml/officeToHtml.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/officetohtml/officeToHtml/officeToHtml.css') }}">
