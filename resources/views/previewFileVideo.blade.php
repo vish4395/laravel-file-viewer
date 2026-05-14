@@ -4,7 +4,7 @@
     @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
     @section('content')
-    <link href="https://vjs.zencdn.net/8.21.1/video-js.css" rel="stylesheet" />
+    <link href="https://vjs.zencdn.net/7.18.1/video-js.css" rel="stylesheet" />
 <link href="https://unpkg.com/@videojs/themes@1/dist/forest/index.css" rel="stylesheet">
 
 <style>
@@ -53,5 +53,5 @@
 </div>
 </div>
 
-<script src="https://vjs.zencdn.net/8.21.1/video.min.js"></script>
+<script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
 @endsection
