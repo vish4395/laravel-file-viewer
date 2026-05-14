@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const table = document.getElementById('csv-table');
             const header = rows[0];
             const thead = document.createElement('thead');
-            thead.className = 'thead-dark';
+            thead.className = 'table-dark';
             const hRow = document.createElement('tr');
             header.forEach(cell => {
                 const th = document.createElement('th');

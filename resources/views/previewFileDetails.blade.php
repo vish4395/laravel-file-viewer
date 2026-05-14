@@ -6,10 +6,10 @@
     </div>
     <div class="col-md-12">
         <div>
-            <div class="d-sm-inline-block d-block pr-1 pl-1 border-right"><label>{{__('Type')}}</label>: {{$type}}</div>
-            <div class="d-sm-inline-block d-block pr-1 pl-1 border-right"><label>{{__('Size')}}</label>: {{$filesizebyteformat}}</div>
+            <div class="d-sm-inline-block d-block pe-1 ps-1 border-end"><label>{{__('Type')}}</label>: {{$type}}</div>
+            <div class="d-sm-inline-block d-block pe-1 ps-1 border-end"><label>{{__('Size')}}</label>: {{$filesizebyteformat}}</div>
             @foreach ($fileData as $fd)
-            <div class="d-sm-inline-block d-block pr-1 pl-1 border-right"><label>{{$fd['label']}}</label>: {{$fd['value']}}</div>
+            <div class="d-sm-inline-block d-block pe-1 ps-1 border-end"><label>{{$fd['label']}}</label>: {{$fd['value']}}</div>
             @endforeach
                 
         </div>

@@ -38,8 +38,8 @@
 </div>
 <div class="col-md-12">
     <div id="result-container" class="preview_container">
-        <div class="embed-responsive embed-responsive-16by9 text-center p-2 mx-auto border border-primary" style="max-width: 650px;max-height: 100%;">
-        <video id="my-video" class="video-js vjs-theme-forest embed-responsive-item" controls preload="auto"
+        <div class="ratio ratio-16x9 text-center p-2 mx-auto border border-primary" style="max-width: 650px;max-height: 100%;">
+        <video id="my-video" class="video-js vjs-theme-forest" controls preload="auto"
         data-setup="{}">
             <source src="{{ $fileUrl }}" />
             <p class="vjs-no-js">
