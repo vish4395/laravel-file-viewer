@@ -21,7 +21,7 @@
         overflow: scroll;
         background: white;
         padding: 1em;
-        height: 90vh
+        height: 85vh;
     }
 </style>
 <div class="row">

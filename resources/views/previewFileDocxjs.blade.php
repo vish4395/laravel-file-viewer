@@ -9,7 +9,7 @@
     }
     #docx-frame {
         width: 100%;
-        height: 84vh;
+        height: 85vh;
         border: none;
         display: block;
         background: #525659;
@@ -31,7 +31,7 @@
     <div class="col-md-12">
         {{-- Render inside an iframe so Bootstrap's CSS is completely isolated --}}
         <iframe id="docx-frame"
-            src="{{ route('laravel-file-viewer.docx-frame', ['url' => $fileUrl]) }}"
+            src="{{ URL::temporarySignedRoute('laravel-file-viewer.docx-frame', now()->addHour(), ['url' => $fileUrl]) }}"
             title="{{ $fileName }}">
         </iframe>
     </div>

@@ -17,7 +17,7 @@
     #ls-wrap {
         position: relative;
         width: 100%;
-        height: 82vh;
+        height: 85vh;
         border: 1px solid #dee2e6;
     }
     #luckysheet {
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 luckysheet.create({
                     container: 'luckysheet',
                     data: exportJson.sheets,
-                    title: exportJson.info ? exportJson.info.name : 'Spreadsheet',
+                    title: (exportJson.info && exportJson.info.name) || 'Spreadsheet',
                     lang: 'en',
                     // read-only viewer config
                     showtoolbar: false,
