@@ -18,7 +18,7 @@ $page_title=$fileName;
         overflow: scroll;
         background: white;
         padding: 1em;
-        height: 90vh;
+        height: 85vh;
     }
     canvas {
         width: 100%;
