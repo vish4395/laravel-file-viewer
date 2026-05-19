@@ -74,7 +74,7 @@
 <script>
     $(function () {
     $("#resolte-contaniner").officeToHtml({
-   url: '{!! $fileUrl !!}',
+   url: @json($fileUrl),
    docxSetting: {
         includeEmbeddedStyleMap: true,
         includeDefaultStyleMap: true,

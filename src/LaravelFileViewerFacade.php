@@ -4,9 +4,6 @@ namespace Vish4395\LaravelFileViewer;
 
 use Illuminate\Support\Facades\Facade;
 
-/**
- * @see \Vish4395\LaravelFileViewer\Skeleton\SkeletonClass
- */
 class LaravelFileViewerFacade extends Facade
 {
     /**

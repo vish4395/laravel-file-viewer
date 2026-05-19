@@ -35,24 +35,11 @@
     </div>
 </div>
 <div class="col-md-12">
-    <div id="resolte-contaniner" class="preview_container">
-        <iframe id="google" 
-        src="https://docs.google.com/a/{{$_SERVER['SERVER_NAME']}}/viewer?url={!! $fileUrl !!}&embedded=true"
+    <div id="result-container" class="preview_container">
+        <iframe id="google"
+        src="https://docs.google.com/a/{{ request()->getHost() }}/viewer?url={{ urlencode($fileUrl) }}&embedded=true"
          width="100%" height="600" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-        
     </div>
 </div>
 </div>
-<script>
-//     $("#resolte-contaniner").officeToHtml({
-//    url: '{!! $fileUrl !!}'
-// });
-function update_viewer() {
-      var link = $('#input').val()
-      if (link.length <= 1) {
-        link = '{!! $fileUrl !!}';
-      }
-      $('#google').attr('src', 'https://docs.google.com/a/{{$_SERVER['SERVER_NAME']}}/viewer?url=' + link + '&embedded=true');
-    }
-</script>
 @endsection

@@ -44,7 +44,7 @@ $page_title=$fileName;
                 controls
                 class="w-100"
                 style="margin-top: 10px"
-                src="{!! $fileUrl !!}">
+                src="{{ $fileUrl }}">
                 Your browser does not support the
                 <code>audio</code> element.
             </audio>
