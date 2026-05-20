@@ -16,7 +16,7 @@ class LaravelFileViewer
             abort(404, __('file_not_found_or_deleted'));
         }
 
-        $type    = $storage->mimeType($filePath);
+        $type    = self::resolveMimeType($storage->mimeType($filePath), $filePath);
         $metadata = ['size' => $storage->size($filePath)];
         $iconClass           = self::getIconClass($type);
         $filesizebyteformat  = self::formatBytes($metadata['size']);
@@ -57,13 +57,15 @@ class LaravelFileViewer
                         return view('laravel-file-viewer::previewFileOdf', $viewdata);
                     case 'zip':
                     case 'x-zip-compressed':
+                        return view('laravel-file-viewer::previewFileArchive', $viewdata);
                     case 'x-rar-compressed':
                     case 'vnd.rar':
                     case 'x-tar':
                     case 'gzip':
                     case 'x-gzip':
-                        return view('laravel-file-viewer::previewFileDetails', $viewdata);
+                        return view('laravel-file-viewer::previewFileArchive', $viewdata);
                     case 'json':
+                    case 'javascript':
                         return view('laravel-file-viewer::previewFileText', $viewdata);
                     default:
                         return self::fallbackView($viewdata);
@@ -71,6 +73,22 @@ class LaravelFileViewer
             default:
                 return self::fallbackView($viewdata);
         }
+    }
+
+    private static function resolveMimeType(string $detected, string $filePath): string
+    {
+        // ODF files are ZIP-based, so content-sniffing detectors often return application/zip.
+        // Prefer the extension for known ODF formats.
+        $extensionMap = [
+            'odt' => 'application/vnd.oasis.opendocument.text',
+            'ods' => 'application/vnd.oasis.opendocument.spreadsheet',
+            'odp' => 'application/vnd.oasis.opendocument.presentation',
+        ];
+        $ext = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+        if (isset($extensionMap[$ext])) {
+            return $extensionMap[$ext];
+        }
+        return $detected;
     }
 
     private static function fallbackView(array $viewdata): View
