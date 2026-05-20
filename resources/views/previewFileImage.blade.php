@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function initViewer() {
         new Viewer(image, { inline: true, backdrop: false, navbar: false });
-        image.style.display      = 'block';
         loadingContainer.style.display = 'none';
     }
 
