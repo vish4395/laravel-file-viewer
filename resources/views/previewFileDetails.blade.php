@@ -7,6 +7,9 @@ $friendlyTypes = [
     'application/vnd.ms-excel'                                                     => 'Excel Spreadsheet',
     'application/vnd.openxmlformats-officedocument.presentationml.presentation'   => 'PowerPoint',
     'application/vnd.ms-powerpoint'                                                => 'PowerPoint',
+    'application/vnd.oasis.opendocument.text'                                     => 'ODF Text Document',
+    'application/vnd.oasis.opendocument.spreadsheet'                              => 'ODF Spreadsheet',
+    'application/vnd.oasis.opendocument.presentation'                             => 'ODF Presentation',
     'application/json'                                                             => 'JSON File',
     'application/zip'                                                              => 'ZIP Archive',
     'application/x-zip-compressed'                                                 => 'ZIP Archive',
@@ -94,7 +97,7 @@ foreach ($iconColorMap as $key => $colors) {
             @if(config('laravel-file-viewer.toolbar.copy_link', true))
                 <button data-copy-url="{{ $fileUrl }}"
                         title="{{ __('Copy link') }}"
-                        onclick="var btn=this;navigator.clipboard.writeText(btn.dataset.copyUrl).then(function(){var t=btn.title;btn.title='Copied!';setTimeout(function(){btn.title=t},2000)})"
+                        onclick="(function(btn){var url=btn.dataset.copyUrl;var done=function(){var t=btn.title;btn.title='Copied!';setTimeout(function(){btn.title=t},2000)};if(navigator.clipboard){navigator.clipboard.writeText(url).then(done)}else{var ta=document.createElement('textarea');ta.value=url;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(ta)}})(this)"
                         class="inline-flex items-center justify-center w-8 h-8 rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-colors">
                     <i class="fa-solid fa-link text-sm"></i>
                 </button>
@@ -102,7 +105,7 @@ foreach ($iconColorMap as $key => $colors) {
         @endisset
         @if(config('laravel-file-viewer.toolbar.fullscreen', true))
             <button title="{{ __('Fullscreen') }}"
-                    onclick="document.fullscreenElement?document.exitFullscreen():(document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen).call(document.documentElement)"
+                    onclick="(function(){if(document.fullscreenElement){document.exitFullscreen()}else{var fn=document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen;if(fn)fn.call(document.documentElement)}})()"
                     class="inline-flex items-center justify-center w-8 h-8 rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-colors">
                 <i class="fa-solid fa-expand text-sm"></i>
             </button>

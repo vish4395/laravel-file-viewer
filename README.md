@@ -155,6 +155,9 @@ return [
 | Word       | `.docx`, `.doc`                              | docx-preview.js         |
 | Excel      | `.xlsx`, `.xls`                              | SheetJS                 |
 | PowerPoint | `.pptx`, `.ppt`                              | Office Online / iframe  |
+| ODF Text   | `.odt`                                       | WebODF (self-hosted)    |
+| ODF Sheet  | `.ods`                                       | WebODF (self-hosted)    |
+| ODF Pres.  | `.odp`                                       | WebODF (self-hosted)    |
 | CSV        | `.csv`                                       | Inline table            |
 | Text       | `.txt`, `.log`, `.md`, `.json`               | Syntax-highlighted text |
 | Archives   | `.zip`, `.rar`, `.tar`, `.gz`                | Details panel           |
@@ -207,6 +210,7 @@ If you discover any security issues, please email [vishal@newai.in](mailto:visha
 - [Vishal Sharma](https://github.com/vish4395)
 - [VolodymyrBaydalka/docxjs](https://github.com/VolodymyrBaydalka/docxjs)
 - [SheetJS](https://sheetjs.com)
+- [WebODF / KO GmbH](https://github.com/kogmbh/WebODF) — AGPL-3.0, bundled via [ViewerJS](https://viewerjs.org/)
 - [All Contributors](../../contributors)
 
 ---

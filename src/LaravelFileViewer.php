@@ -51,6 +51,10 @@ class LaravelFileViewer
                     case 'vnd.openxmlformats-officedocument.presentationml.presentation':
                     case 'vnd.ms-powerpoint':
                         return view('laravel-file-viewer::previewFilePptx', $viewdata);
+                    case 'vnd.oasis.opendocument.text':
+                    case 'vnd.oasis.opendocument.spreadsheet':
+                    case 'vnd.oasis.opendocument.presentation':
+                        return view('laravel-file-viewer::previewFileOdf', $viewdata);
                     case 'zip':
                     case 'x-zip-compressed':
                     case 'x-rar-compressed':
