@@ -1,7 +1,7 @@
 <?php $page_title = $fileName; ?>
 @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
-@section('content')
+@push('styles')
 <style>
     #csv-table thead th {
         background: #1e293b;
@@ -27,7 +27,9 @@
     #csv-table tbody tr:nth-child(even) td { background: #f8fafc; }
     #csv-table tbody tr:hover td { background: #eff6ff; }
 </style>
+@endpush
 
+@section('content')
 <div class="flex flex-col h-screen">
     @include('laravel-file-viewer::previewFileDetails')
 
@@ -43,16 +45,18 @@
         <table id="csv-table" class="hidden w-full border-collapse"></table>
     </div>
 </div>
+@endsection
 
+@push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const ROW_LIMIT = 5000;
+    var ROW_LIMIT = @json(config('laravel-file-viewer.csv_row_limit', 5000));
 
     function parseCSV(text) {
-        const rows = [];
-        let row = [], field = '', inQuotes = false, i = 0;
+        var rows = [];
+        var row = [], field = '', inQuotes = false, i = 0;
         while (i < text.length) {
-            const ch = text[i];
+            var ch = text[i];
             if (inQuotes) {
                 if (ch === '"' && text[i + 1] === '"') { field += '"'; i += 2; continue; }
                 if (ch === '"') { inQuotes = false; i++; continue; }
@@ -74,38 +78,38 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch(@json($fileUrl))
         .then(function (r) { return r.text(); })
         .then(function (text) {
-            const allRows = parseCSV(text);
+            var allRows = parseCSV(text);
             if (!allRows.length) {
                 document.getElementById('csv-loading').textContent = 'CSV file is empty.';
                 return;
             }
 
-            const truncated = allRows.length - 1 > ROW_LIMIT;
-            const rows = truncated ? allRows.slice(0, ROW_LIMIT + 1) : allRows;
+            var truncated = allRows.length - 1 > ROW_LIMIT;
+            var rows = truncated ? allRows.slice(0, ROW_LIMIT + 1) : allRows;
 
             if (truncated) {
-                const notice = document.getElementById('csv-notice');
+                var notice = document.getElementById('csv-notice');
                 notice.classList.remove('hidden');
                 notice.textContent = 'Showing first ' + ROW_LIMIT.toLocaleString() + ' of ' + (allRows.length - 1).toLocaleString() + ' rows.';
             }
 
-            const table = document.getElementById('csv-table');
+            var table = document.getElementById('csv-table');
 
-            const thead = document.createElement('thead');
-            const hRow  = document.createElement('tr');
+            var thead = document.createElement('thead');
+            var hRow  = document.createElement('tr');
             rows[0].forEach(function (cell) {
-                const th = document.createElement('th');
+                var th = document.createElement('th');
                 th.textContent = cell;
                 hRow.appendChild(th);
             });
             thead.appendChild(hRow);
             table.appendChild(thead);
 
-            const tbody = document.createElement('tbody');
+            var tbody = document.createElement('tbody');
             rows.slice(1).forEach(function (row) {
-                const tr = document.createElement('tr');
+                var tr = document.createElement('tr');
                 row.forEach(function (cell) {
-                    const td = document.createElement('td');
+                    var td = document.createElement('td');
                     td.textContent = cell;
                     tr.appendChild(td);
                 });
@@ -121,4 +125,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 </script>
-@endsection
+@endpush

@@ -1,6 +1,11 @@
 <?php $page_title = $fileName; ?>
 @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
+@push('styles')
+<link href="{{ asset('vendor/laravel-file-viewer/videojs/video-js.css') }}" rel="stylesheet">
+<link href="{{ asset('vendor/laravel-file-viewer/videojs/themes/forest/index.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
 <div class="flex flex-col h-screen">
     @include('laravel-file-viewer::previewFileDetails')
@@ -21,8 +26,8 @@
         </div>
     </div>
 </div>
-
-<link href="https://vjs.zencdn.net/7.18.1/video-js.css" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/@videojs/themes@1/dist/forest/index.css" rel="stylesheet" />
-<script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
 @endsection
+
+@push('scripts')
+<script src="{{ asset('vendor/laravel-file-viewer/videojs/video.min.js') }}"></script>
+@endpush

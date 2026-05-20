@@ -1,12 +1,14 @@
 <?php $page_title = $fileName; ?>
 @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
-@section('content')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet@2.1.13/dist/plugins/css/pluginsCss.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet@2.1.13/dist/plugins/plugins.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet@2.1.13/dist/css/luckysheet.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luckysheet@2.1.13/dist/assets/iconfont/iconfont.css">
+@push('styles')
+<link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/luckysheet/css/pluginsCss.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/luckysheet/css/plugins.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/luckysheet/css/luckysheet.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/luckysheet/assets/iconfont/iconfont.css') }}">
+@endpush
 
+@section('content')
 <div class="flex flex-col h-screen">
     @include('laravel-file-viewer::previewFileDetails')
 
@@ -23,10 +25,12 @@
         </div>
     </div>
 </div>
+@endsection
 
-<script src="https://cdn.jsdelivr.net/npm/luckysheet@2.1.13/dist/plugins/js/plugin.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/luckysheet@2.1.13/dist/luckysheet.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/luckyexcel@1.0.1/dist/luckyexcel.umd.js"></script>
+@push('scripts')
+<script src="{{ asset('vendor/laravel-file-viewer/luckysheet/js/plugin.js') }}"></script>
+<script src="{{ asset('vendor/laravel-file-viewer/luckysheet/js/luckysheet.umd.js') }}"></script>
+<script src="{{ asset('vendor/laravel-file-viewer/luckyexcel/luckyexcel.umd.js') }}"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     var fileUrl = @json($fileUrl);
@@ -43,8 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             LuckyExcel.transformExcelToLucky(file, function (exportJson) {
                 if (!exportJson || !exportJson.sheets || !exportJson.sheets.length) {
-                    document.getElementById('excel-loading').innerHTML =
-                        '<p class="text-amber-600 text-sm">No sheets found.</p>';
+                    document.getElementById('excel-loading').textContent = 'No sheets found.';
                     return;
                 }
 
@@ -52,26 +55,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('ls-wrap').style.display = '';
 
                 luckysheet.create({
-                    container:             'luckysheet',
-                    data:                  exportJson.sheets,
-                    title:                 (exportJson.info && exportJson.info.name) || 'Spreadsheet',
-                    lang:                  'en',
-                    showtoolbar:           false,
-                    showinfobar:           false,
-                    showstatisticBar:      false,
-                    sheetBottomConfig:     false,
-                    allowEdit:             false,
-                    enableAddRow:          false,
-                    enableAddCol:          false,
-                    showsheetbar:          true,
+                    container:              'luckysheet',
+                    data:                   exportJson.sheets,
+                    title:                  (exportJson.info && exportJson.info.name) || 'Spreadsheet',
+                    lang:                   'en',
+                    showtoolbar:            false,
+                    showinfobar:            false,
+                    showstatisticBar:       false,
+                    sheetBottomConfig:      false,
+                    allowEdit:              false,
+                    enableAddRow:           false,
+                    enableAddCol:           false,
+                    showsheetbar:           true,
                     showConfigWindowResize: false,
                 });
             });
         })
         .catch(function (err) {
-            document.getElementById('excel-loading').innerHTML =
-                '<p class="text-red-500 text-sm">Failed to load spreadsheet: ' + err.message + '</p>';
+            document.getElementById('excel-loading').textContent = 'Failed to load spreadsheet: ' + err.message;
         });
 });
 </script>
-@endsection
+@endpush

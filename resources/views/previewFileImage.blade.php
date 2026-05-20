@@ -1,6 +1,10 @@
 <?php $page_title = $fileName; ?>
 @extends('laravel-file-viewer::layouts.blank_app_no_logo')
 
+@push('styles')
+<link rel="stylesheet" href="{{ asset('vendor/laravel-file-viewer/viewerjs/viewer.min.css') }}">
+@endpush
+
 @section('content')
 <div class="flex flex-col h-screen">
     @include('laravel-file-viewer::previewFileDetails')
@@ -18,19 +22,29 @@
         </div>
     </div>
 </div>
+@endsection
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.css" integrity="sha512-za6IYQz7tR0pzniM/EAkgjV1gf1kWMlVJHBHavKIvsNoUMKWU99ZHzvL6lIobjiE2yKDAKMDSSmcMAxoiWgoWA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js" integrity="sha512-EC3CQ+2OkM+ZKsM1dbFAB6OGEPKRxi6EDRnZW9ys8LghQRAq6cXPUgXCCujmDrXdodGXX9bqaaCRtwj4h4wgSQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@push('scripts')
+<script src="{{ asset('vendor/laravel-file-viewer/viewerjs/viewer.min.js') }}"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const image           = document.getElementById('image');
-    const loadingContainer = document.getElementById('loading-container');
+    var image            = document.getElementById('image');
+    var loadingContainer = document.getElementById('loading-container');
 
-    setTimeout(function () {
+    function initViewer() {
         new Viewer(image, { inline: true, backdrop: false, navbar: false });
-        image.style.display = 'block';
+        image.style.display      = 'block';
         loadingContainer.style.display = 'none';
-    }, 500);
+    }
+
+    if (image.complete && image.naturalWidth) {
+        initViewer();
+    } else {
+        image.addEventListener('load', initViewer);
+        image.addEventListener('error', function () {
+            loadingContainer.innerHTML = '<span class="text-sm text-red-400">Failed to load image.</span>';
+        });
+    }
 });
 </script>
-@endsection
+@endpush

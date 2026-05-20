@@ -10,4 +10,7 @@ return [
         'copy_link'       => env('FILE_VIEWER_TOOLBAR_COPY_LINK', true),
         'fullscreen'      => env('FILE_VIEWER_TOOLBAR_FULLSCREEN', true),
     ],
+
+    'csv_row_limit'    => env('FILE_VIEWER_CSV_ROW_LIMIT', 5000),
+    'pptx_slides_scale' => env('FILE_VIEWER_PPTX_SLIDES_SCALE', '50%'),
 ];

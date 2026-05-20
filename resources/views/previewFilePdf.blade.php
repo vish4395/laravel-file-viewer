@@ -15,12 +15,14 @@
         </div>
     </div>
 </div>
+@endsection
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha384-/1qUCSGwTur9vjf/z9lmu/eCUYbpOTgSjmpbMQZ1/CtX2v/WcAIKqRv+U1DUCG6e" crossorigin="anonymous"></script>
+@push('scripts')
+<script src="{{ asset('vendor/laravel-file-viewer/pdfjs/pdf.min.js') }}"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     pdfjsLib.GlobalWorkerOptions.workerSrc =
-        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        '{{ asset('vendor/laravel-file-viewer/pdfjs/pdf.worker.min.js') }}';
 
     pdfjsLib.getDocument({ url: @json($fileUrl) }).promise
         .then(function (pdf) {
@@ -32,11 +34,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     var scale    = Math.min(1.5, (container.clientWidth - 32) / page.getViewport({ scale: 1 }).width);
                     var viewport = page.getViewport({ scale: scale });
                     var canvas   = document.createElement('canvas');
-                    canvas.width         = viewport.width;
-                    canvas.height        = viewport.height;
-                    canvas.style.display    = 'block';
-                    canvas.style.margin     = '0 auto 12px auto';
-                    canvas.style.boxShadow  = '0 2px 12px rgba(0,0,0,0.5)';
+                    canvas.width              = viewport.width;
+                    canvas.height             = viewport.height;
+                    canvas.style.display      = 'block';
+                    canvas.style.margin       = '0 auto 12px auto';
+                    canvas.style.boxShadow    = '0 2px 12px rgba(0,0,0,0.5)';
                     canvas.style.borderRadius = '2px';
                     container.appendChild(canvas);
                     page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport });
@@ -55,4 +57,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 </script>
-@endsection
+@endpush
