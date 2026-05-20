@@ -1,0 +1,14 @@
+Laravel File Viewer — Plain Text Demo
+======================================
+
+This is a sample plain text file used to demonstrate the text preview.
+
+Features:
+- Syntax highlighting via Prism.js
+- Monospace font rendering
+- Download and copy-link toolbar actions
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat.
