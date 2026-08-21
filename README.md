@@ -225,6 +225,14 @@ https://user-images.githubusercontent.com/12929023/210215225-000507cf-d8f4-4e5b-
 
 ## ⭐ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=vish4395/laravel-file-viewer&type=Timeline)](https://www.star-history.com/#vish4395/laravel-file-viewer&Timeline)
+## Star History
 
+<a href="https://www.star-history.com/">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=vish4395/laravel-file-viewer&type=timeline&theme=dark&legend=top-left&sealed_token=PSicdklK8VWYpz1DMdqmYZHTX4TBRearY96op2sq6RGLeMeL9LlYs3SpZ5PEesZlnIkbbhxl3wW9Ivv8GBDXTWbya7deARWR-5mrFatqyDBwPuKmIgdiRw" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=vish4395/laravel-file-viewer&type=timeline&legend=top-left&sealed_token=PSicdklK8VWYpz1DMdqmYZHTX4TBRearY96op2sq6RGLeMeL9LlYs3SpZ5PEesZlnIkbbhxl3wW9Ivv8GBDXTWbya7deARWR-5mrFatqyDBwPuKmIgdiRw" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=vish4395/laravel-file-viewer&type=timeline&legend=top-left&sealed_token=PSicdklK8VWYpz1DMdqmYZHTX4TBRearY96op2sq6RGLeMeL9LlYs3SpZ5PEesZlnIkbbhxl3wW9Ivv8GBDXTWbya7deARWR-5mrFatqyDBwPuKmIgdiRw" />
+ </picture>
+</a>
+[![Star History Chart](https://api.star-history.com/chart?repos=vish4395/laravel-file-viewer&type=timeline&legend=top-left&sealed_token=PSicdklK8VWYpz1DMdqmYZHTX4TBRearY96op2sq6RGLeMeL9LlYs3SpZ5PEesZlnIkbbhxl3wW9Ivv8GBDXTWbya7deARWR-5mrFatqyDBwPuKmIgdiRw)](https://www.star-history.com/)
 ---
